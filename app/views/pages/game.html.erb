@@ -27,7 +27,72 @@
 
 <div class="result lost">
 	<span>NOOOOOO :(</span>
+	<h1>Score: <span id="finalScore"></span></h1>
+	<form action="">
+		<input type="email" name="email" class="email-input" placeholder="Correo Electrónico">
+	</form>
+	<a href="#" id="registerScore">Registre su puntaje</a>
 	<div class="close">
 		<a href="#">Volver a Jugar</a>
 	</div>
+
 </div>
+
+<script>
+var correct;
+var score = 0;
+
+
+// Iniciializa el uego
+game();
+
+// enlaza el click de los íconos
+$('.option').on('click',guess);
+$('.close a').on('click', function() {
+	event.preventDefault();
+	$('.result').hide();
+	$('.option').removeClass('scale');
+	$('.email-input').val('');
+	game();
+});
+
+
+function game(){
+	correct = Math.floor(Math.random() * 3);
+	$('.option').each(function (index) {
+		var color = generateColor();
+		$(this).css('background-color', color);
+
+		if (index == correct) {
+			$('.question').text(color);
+		};
+	});
+
+}
+
+
+function guess() {
+
+	$(this).addClass('scale');
+	var index = $('.option').index(this)
+	if (index == correct) {
+		$('.result.won').show();
+		score++;
+	}else{
+		$('.result.lost').show();
+		$('#finalScore').text(score);
+		score = 0;
+	}
+
+	$('.score span').text(score);
+	
+
+}
+
+function generateColor(){
+	return 'rgb(' + random() + ',' + random() + ',' + random() + ')';
+}
+function random(){
+	return Math.floor(Math.random() * 255);
+}
+</script>
