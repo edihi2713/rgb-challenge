@@ -28,10 +28,15 @@
 <div class="result lost">
 	<span>NOOOOOO :(</span>
 	<h1>Score: <span id="finalScore"></span></h1>
-	<form action="">
-		<input type="email" name="email" class="email-input" placeholder="Correo Electrónico">
-	</form>
-	<a href="#" id="registerScore">Registre su puntaje</a>
+	
+	<div class="score-form">
+		<%= form_for(@competitor) do |competitor| %>
+			<%= hidden_field_tag 'competitor[score]', 0, id:'hiddenScoreInput' %>
+			<div><%= competitor.email_field :email, placeholder: 'Correo Electrónico', class: 'email-input' %></div>
+			<div><%= competitor.submit 'Registrar puntaje', id: 'registerScore' %></div>
+		<% end %>
+	</div>
+
 	<div class="close">
 		<a href="#">Volver a Jugar</a>
 	</div>
@@ -81,6 +86,7 @@ function guess() {
 	}else{
 		$('.result.lost').show();
 		$('#finalScore').text(score);
+		$('#hiddenScoreInput').val(score);
 		score = 0;
 	}
 

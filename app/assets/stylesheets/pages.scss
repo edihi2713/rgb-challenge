@@ -1,12 +1,4 @@
 
-
-body {
-  background-color: rgb(48, 48, 48);
-  color: white;
-  text-align: center;
-  font-family: 'Inconsolata';
-}
-
 .titulo{
   background-color: #086A87;
   height: 100px;
@@ -14,6 +6,19 @@ body {
   position: absolute;
     top: 0;
     left: 0;
+}
+
+.score{
+  margin-top: 120px;
+  font-size: 30px;
+  text-align: center;
+}
+
+body {
+  background-color: rgb(48, 48, 48);
+  color: white;
+  text-align: center;
+  font-family: 'Inconsolata';
 }
 
 .question-container {
@@ -35,12 +40,6 @@ body {
 
 .question {
   font-size: 28px;
-}
-
-.score{
-  margin-top: 120px;
-  font-size: 30px;
-  text-align: center;
 }
 
 
@@ -66,11 +65,20 @@ body {
 
 .result .close a, #registerScore {
   color: white;
+  font-family: 'Inconsolata';
   font-size: 21px;
   text-decoration: none;
   border: 5px solid white;
   padding: 10px 15px;
   border-radius: 5px;
+}
+
+#registerScore {
+  cursor: pointer;
+}
+
+input[type=submit] {
+  background-color: transparent;
 }
 
 .result .close {
