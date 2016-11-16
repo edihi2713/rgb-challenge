@@ -1,2 +1,21 @@
-<h1>Competitors#index</h1>
-<p>Find me in app/views/competitors/index.html.erb</p>
+
+<table class="positions">
+	<thead>
+		<th>Posición</th>
+		<th>Competidor </th>
+		<th>Puntaje</th>
+	</thead>
+	<tbody>	
+		<% @competitors.each_with_index do |competitor, index|  %>
+			<tr>
+				<td width="10%"><%= index + 1 %></td>
+				<td width="45%"><%= competitor.email %></td>
+				<td width="45%"><%= competitor.score %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<div id="playAgainContainer">
+	<%= link_to 'Volver a Jugar', root_path, class: 'play-again' %>
+</div>
